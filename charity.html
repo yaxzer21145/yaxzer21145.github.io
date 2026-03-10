@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PartyPixel · 公益计划</title>
+    <!-- 使用与官网一致的现代字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 图标库 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0c0f0c;
+            background-image: radial-gradient(circle at 30% 40%, #1e3a1e15 0%, transparent 30%),
+                              radial-gradient(circle at 70% 80%, #2d5a2d15 0%, transparent 40%);
+            font-family: 'Inter', sans-serif;
+            color: #eef4ee;
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1300px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* 导航栏 (与官网保持一致) */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 15px 0 25px;
+            border-bottom: 1px solid #2e462e;
+            margin-bottom: 40px;
+        }
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #b3f0b3, #d9ffb8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo span {
+            background: linear-gradient(135deg, #fae175, #ffd966);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: #c5e0c5;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: 0.2s;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ffffff;
+            border-bottom-color: #63c063;
+        }
+
+        /* 页面标题 */
+        .page-title {
+            text-align: center;
+            margin: 20px 0 40px;
+        }
+        .page-title h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(145deg, #daf5d0, #ecffd3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+        .page-title p {
+            font-size: 1.2rem;
+            color: #b2d8b2;
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(30, 50, 30, 0.5);
+            padding: 8px 25px;
+            border-radius: 60px;
+            border: 1px solid #4b7a4b;
+            display: inline-block;
+            backdrop-filter: blur(4px);
+        }
+
+        /* 主内容卡片 */
+        .charity-card {
+            background: #162016;
+            border: 1px solid #3b633b;
+            border-radius: 40px;
+            padding: 50px 40px;
+            margin: 30px 0 40px;
+            box-shadow: 0 20px 30px -12px black;
+        }
+
+        .promise-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .promise-icon {
+            font-size: 4rem;
+            color: #f5e56b;
+            margin-bottom: 20px;
+        }
+        .promise-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffefb5;
+            margin-bottom: 15px;
+        }
+        .promise-text {
+            font-size: 1.3rem;
+            color: #c2ddc2;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .promise-highlight {
+            background: #1f3a1f;
+            border: 1px solid #569656;
+            border-radius: 50px;
+            padding: 20px 30px;
+            margin: 30px auto 0;
+            max-width: 700px;
+            font-size: 1.4rem;
+            color: #f0e49e;
+            font-weight: 600;
+        }
+        .promise-highlight i {
+            color: #9fe09f;
+            margin-right: 10px;
+        }
+
+        .rule-section {
+            background: #121e12;
+            border-radius: 40px;
+            padding: 35px 30px;
+            margin: 40px 0;
+            border: 1px solid #4a7e4a;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+        .rule-text {
+            flex: 2;
+            min-width: 280px;
+        }
+        .rule-text h3 {
+            font-size: 2rem;
+            color: #e2f5b8;
+            margin-bottom: 15px;
+        }
+        .rule-text p {
+            font-size: 1.2rem;
+            color: #bedabe;
+        }
+        .rule-icon {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+        }
+        .rule-icon i {
+            font-size: 5rem;
+            color: #f0c45a;
+            background: #1f3a1f;
+            padding: 25px;
+            border-radius: 80px;
+            border: 2px solid #569656;
+        }
+
+        /* 捐赠公示标题 */
+        .gallery-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #e2f5b8;
+            margin: 60px 0 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        .gallery-title i {
+            color: #f0c45a;
+            font-size: 2rem;
+        }
+
+        /* 图片占位网格 */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 30px 0 40px;
+        }
+        @media (max-width: 700px) {
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+        .gallery-item {
+            background: #1b281b;
+            border: 2px solid #468046;
+            border-radius: 30px;
+            padding: 80px 20px;
+            text-align: center;
+            transition: 0.2s;
+            box-shadow: 0 15px 25px -10px black;
+        }
+        .gallery-item:hover {
+            border-color: #67b067;
+            background: #1f331f;
+            transform: translateY(-3px);
+        }
+        .gallery-item i {
+            font-size: 4rem;
+            color: #5f9f5f;
+            margin-bottom: 20px;
+        }
+        .gallery-item span {
+            font-size: 1.2rem;
+            color: #9ecf9e;
+            display: block;
+        }
+
+        /* 底部 */
+        .footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 0 20px;
+            border-top: 1px solid #386238;
+            color: #a1c5a1;
+            margin-top: 20px;
+        }
+        .social a {
+            color: #b8e5b8;
+            font-size: 2rem;
+            margin-left: 20px;
+            transition: 0.2s;
+        }
+        .social a:hover {
+            color: #fcfc9c;
+        }
+
+        /* 响应式微调 */
+        @media (max-width: 600px) {
+            .page-title h1 { font-size: 2.5rem; }
+            .promise-title { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 导航栏 (高亮公益) -->
+        <nav class="navbar">
+            <div class="logo">Party<span>Pixel</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">主页</a></li>
+                <li><a href="#">游戏模式</a></li>
+                <li><a href="#">社区</a></li>
+                <li><a href="shop.html">商店</a></li>
+                <li><a href="#" class="active">公益</a></li>
+                <li><a href="#">支持</a></li>
+            </ul>
+        </nav>
+
+        <!-- 页面标题 -->
+        <div class="page-title">
+            <h1>❤️ 公益计划</h1>
+            <p>汇聚点滴爱心，传递温暖力量</p>
+        </div>
+
+        <!-- 主内容卡片 -->
+        <div class="charity-card">
+            <!-- 承诺部分 -->
+            <div class="promise-section">
+                <div class="promise-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                <div class="promise-title">我们承诺</div>
+                <div class="promise-text">
+                    您在 PartyPixel 的每一笔充值赞助，我们将抽取 <span style="color: #f5e56b; font-weight: 700;">25%</span> 作为公益资金。
+                </div>
+                <div class="promise-highlight">
+                    <i class="fas fa-check-circle"></i> 您的支持，让爱心传递
+                </div>
+            </div>
+
+            <!-- 捐赠规则区域 (已添加哔哩哔哩公益链接) -->
+            <div class="rule-section">
+                <div class="rule-text">
+                    <h3><i class="fas fa-calendar-alt" style="margin-right: 10px; color: #f0c45a;"></i> 捐赠方式</h3>
+                    <p>当月的所有公益资金将在次月 1 号通过 
+                        <a href="https://love.bilibili.com/" target="_blank" rel="noopener noreferrer" style="color: #f5e56b; font-weight: 700; text-decoration: none; border-bottom: 2px solid #f5e56b;">哔哩哔哩公益</a> 
+                        平台进行捐出，并公示捐赠证书。
+                    </p>
+                </div>
+                <div class="rule-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+            </div>
+
+            <!-- 捐赠公示标题 -->
+            <div class="gallery-title">
+                <i class="fas fa-certificate"></i> 捐赠公示 <i class="fas fa-certificate"></i>
+            </div>
+
+            <!-- 三个图片占位 (模拟捐赠证书) -->
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <i class="fas fa-image"></i>
+                    <span>2025年2月 证书</span>
+                </div>
+                <div class="gallery-item">
+                    <i class="fas fa-image"></i>
+                    <span>2025年1月 证书</span>
+                </div>
+                <div class="gallery-item">
+                    <i class="fas fa-image"></i>
+                    <span>2024年12月 证书</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部 (与官网一致) -->
+        <footer class="footer">
+            <div>健康游戏忠告：抵制不良游戏，拒绝盗版游戏。注意自我保护，谨防受骗上当。适度游戏益脑，沉迷游戏伤身。合理安排时间，享受健康生活。</div>
+            <div>Copyright © 2025 - 2026 PartyPixel. All Rights Reserved.</div>
+            <div class="social">
+                <a href="https://discord.gg/你的邀请码" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                <a href="https://qm.qq.com/cgi-bin/qm/qr?k=你的QQ群号" target="_blank" aria-label="QQ"><i class="fab fa-qq"></i></a>
+                <a href="https://space.bilibili.com/你的B站UID" target="_blank" aria-label="BiliBili"><i class="fab fa-bilibili"></i></a>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
